@@ -20,6 +20,12 @@
             android:text="Pokémon du jour"
             android:textSize="20sp" />
 
+        <ImageView
+            android:id="@+id/imgSprite"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:contentDescription="Sprite du Pokémon" />
+
         <TextView
             android:id="@+id/pokemonName"
             android:layout_width="wrap_content"
