@@ -1,12 +1,15 @@
 package com.example.pokedex
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.pokedex.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
+import okio.IOException
+import retrofit2.HttpException
 
 class MainActivity : AppCompatActivity() {
 
@@ -89,7 +92,19 @@ class MainActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 binding.pokemonName.text = "Erreur de chargement"
                 e.printStackTrace()
+            } catch (e: HttpException) {
+                Toast.makeText(
+                    this@MainActivity,
+                    "Erreur HTTP: " + e.code(), Toast.LENGTH_SHORT
+                ).show()
+
+            } catch (e: IOException) {
+                Toast.makeText(
+                    this@MainActivity,
+                    "Pas de connexion Internet", Toast.LENGTH_SHORT
+                ).show()
             }
+
         }
     }
 }
