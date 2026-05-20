@@ -8,7 +8,8 @@ data class Pokemon(
     val category: String,
     val name: PokemonName,
     val sprites: PokemonSprites,
-    val types: List<PokemonType>?
+    val types: List<PokemonType>?,
+    val stats: PokemonStats?
 )
 
 data class PokemonName(
@@ -26,4 +27,11 @@ data class PokemonSprites(
 data class PokemonType(
     val name: String,
     val image: String
+)
+
+data class PokemonStats(
+    val hp: Int,
+    val atk: Int,
+    val def: Int,
+    @SerializedName("spe_atk") val speAtk: Int
 )
