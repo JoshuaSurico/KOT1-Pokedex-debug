@@ -94,6 +94,19 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp" />
+
         <Switch
             android:id="@+id/switchShiny"
             android:layout_width="wrap_content"
@@ -124,6 +137,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="JP" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnPrecedent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Précédent" />
+
+            <Button
+                android:id="@+id/btnRandom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="🎲" />
+
+            <Button
+                android:id="@+id/btnSuivant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Suivant" />
 
         </LinearLayout>
     </LinearLayout>

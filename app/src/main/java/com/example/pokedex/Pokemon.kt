@@ -7,9 +7,11 @@ data class Pokemon(
     val generation: Int,
     val category: String,
     val name: PokemonName,
-    val sprites: PokemonSprites,
+    val sprites: PokemonSprites?,
     val types: List<PokemonType>?,
-    val stats: PokemonStats?
+    val stats: PokemonStats?,
+    val height: String?,
+    val weight: String?
 )
 
 data class PokemonName(
@@ -20,8 +22,8 @@ data class PokemonName(
 
 
 data class PokemonSprites(
-    val regular: String,
-    val shiny: String
+    val regular: String?,
+    val shiny: String?
 )
 
 data class PokemonType(
