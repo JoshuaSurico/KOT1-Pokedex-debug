@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         displayPokemon(currentId)
 
         binding.btnFr.setOnClickListener {
-            binding.pokemonName.text = currentPokemon?.name?.fr
+            binding.pokemonName.text = currentPokemon!!.name.fr
         }
 
         binding.btnEn.setOnClickListener {
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                 .into(binding.imgSprite)
         }
 
-        binding.btnPrecedent.setOnClickListener {
+        binding.btnPrev.setOnClickListener {
             if (currentId > 1) {
                 currentId--
                 displayPokemon(currentId)
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnRandom.setOnClickListener {
-            currentId = (1..MAX_POKEMON_ID).random()
+            currentId = (1..1200).random()
             displayPokemon(currentId)
         }
     }
@@ -73,6 +73,8 @@ class MainActivity : AppCompatActivity() {
     private var currentId = 1
 
     private fun displayPokemon(id: Int) {
+
+        require(id in 1..MAX_POKEMON_ID) { "ID Pokémon invalide : $id" }
 
         lifecycleScope.launch {
             try {
@@ -92,19 +94,19 @@ class MainActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 binding.pokemonName.text = "Erreur de chargement"
                 e.printStackTrace()
+            } catch (e: IOException) {
+                val message = when (e) {
+                    is java.net.UnknownHostException -> "Adresse du serveur introuvable (Vérifiez l'URL ou votre connexion)"
+                    is java.net.SocketTimeoutException -> "Le serveur a mis trop de temps à répondre"
+                    else -> "Erreur réseau ou connexion absente"
+                }
+                Toast.makeText(this@MainActivity, message, Toast.LENGTH_LONG).show()
             } catch (e: HttpException) {
                 Toast.makeText(
                     this@MainActivity,
-                    "Erreur HTTP: " + e.code(), Toast.LENGTH_SHORT
-                ).show()
-
-            } catch (e: IOException) {
-                Toast.makeText(
-                    this@MainActivity,
-                    "Pas de connexion Internet", Toast.LENGTH_SHORT
+                    "Erreur HTTP: " + e.code(), Toast.LENGTH_LONG
                 ).show()
             }
-
         }
     }
 }

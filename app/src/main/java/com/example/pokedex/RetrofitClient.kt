@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    private const val BASE_URL = "https://tyradex.app/"
+    private const val BASE_URL = "https://tyra-dex.app/"
 
     val api: TyradexApi by lazy {
         Retrofit.Builder()
